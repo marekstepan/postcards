@@ -15,11 +15,10 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Postcard extends BaseEntity{
+public class Postcard extends BaseEntity {
 
   private Timestamp created;
   private Timestamp edited;
-  private Timestamp deleted;
   private String editor;
   private String frontTitle;
   private String frontSubtitle;

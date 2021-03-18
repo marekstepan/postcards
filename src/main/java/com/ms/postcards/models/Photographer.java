@@ -1,4 +1,22 @@
 package com.ms.postcards.models;
 
-public class Photographer extends BaseEntity{
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.Entity;
+import java.sql.Timestamp;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+public class Photographer extends BaseEntity {
+
+  private Timestamp created;
+  private Timestamp edited;
+  private int name;
+  private String note;
 }

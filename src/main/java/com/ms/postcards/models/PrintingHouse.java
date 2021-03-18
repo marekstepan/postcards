@@ -13,11 +13,10 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Owner extends BaseEntity {
+public class PrintingHouse extends BaseEntity {
 
   private Timestamp created;
   private Timestamp edited;
   private int name;
   private String note;
-
 }
