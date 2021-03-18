@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Shot extends BaseEntity{
+public class PostcardTag extends BaseEntity {
   @ManyToOne(cascade = CascadeType.PERSIST)
   @JoinColumn
   @JsonIgnore
