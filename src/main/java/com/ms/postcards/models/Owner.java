@@ -1,4 +1,8 @@
 package com.ms.postcards.models;
 
-public class Owner extends BaseEntity{
+import javax.persistence.Entity;
+
+@Entity
+public class Owner extends BaseEntity {
+
 }
