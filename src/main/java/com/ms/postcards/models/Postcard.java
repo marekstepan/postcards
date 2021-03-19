@@ -5,10 +5,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.sql.Timestamp;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -39,11 +46,25 @@ public class Postcard extends BaseEntity {
   private String backSubtitle;
   private String note;
   @OneToMany(mappedBy = "postcard")
-  private List<PostcardTag> postcardTags;
-  @OneToMany(mappedBy = "postcard")
   private List<Shot> shots;
   private String addresseeMunicipality;
   private int addresseeZip;
+  @ManyToOne
+  @JoinColumn(name="owner_id")
+  private Owner owner;
+  @ManyToOne
+  @JoinColumn(name="printinghouse_id")
+  private PrintingHouse printingHouse;
+  @ManyToOne
+  @JoinColumn(name="publisher_id")
+  private Publisher publisher;
+  @ManyToMany(cascade = { CascadeType.ALL })
+  @JoinTable(
+      name = "Postcard_PostcardTag",
+      joinColumns = { @JoinColumn(name = "postcard_id") },
+      inverseJoinColumns = { @JoinColumn(name = "postcardtag_id") }
+  )
+  Set<PostcardTag> postcardTags = new HashSet<>();
 
 
 

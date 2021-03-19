@@ -28,5 +28,8 @@ public class Shot extends BaseEntity {
   @ManyToOne(cascade = CascadeType.PERSIST)
   @JoinColumn
   @JsonIgnore
-  protected Postcard postcard;
+  private Postcard postcard;
+  @ManyToOne
+  @JoinColumn(name="photographer_id")
+  private Photographer photographer;
 }

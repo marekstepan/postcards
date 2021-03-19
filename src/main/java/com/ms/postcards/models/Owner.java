@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -19,5 +21,7 @@ public class Owner extends BaseEntity {
   private Timestamp edited;
   private int name;
   private String note;
+  @OneToMany(mappedBy = "Owner")
+  private Set<Postcard> postcards;
 
 }
