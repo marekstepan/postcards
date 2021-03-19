@@ -26,7 +26,9 @@ public class Postcard extends BaseEntity {
 
   private Timestamp created;
   private Timestamp edited;
-  private String editor;
+  @ManyToOne
+  @JoinColumn(name="user_id")
+  private User user;
   private String frontTitle;
   private String frontSubtitle;
   private int shotsCount;
@@ -44,6 +46,7 @@ public class Postcard extends BaseEntity {
   private int pcsForSale;
   private String backTitle;
   private String backSubtitle;
+  private String imagePath;
   private String note;
   @OneToMany(mappedBy = "postcard")
   private List<Shot> shots;

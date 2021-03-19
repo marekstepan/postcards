@@ -8,7 +8,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.Collection;
+import java.util.List;
 
 @Getter
 @Setter
@@ -19,6 +21,8 @@ public class User extends BaseEntity implements UserDetails {
 
   private String username;
   private String password;
+  @OneToMany(mappedBy = "user")
+  private List<Postcard> postcards;
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
