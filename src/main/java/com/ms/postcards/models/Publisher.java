@@ -21,6 +21,6 @@ public class Publisher extends BaseEntity {
   private Timestamp edited;
   private int name;
   private String note;
-  @OneToMany(mappedBy = "Publisher")
+  @OneToMany(mappedBy = "publisher")
   private Set<Postcard> postcards;
 }

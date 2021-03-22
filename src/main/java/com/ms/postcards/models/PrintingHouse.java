@@ -21,6 +21,6 @@ public class PrintingHouse extends BaseEntity {
   private Timestamp edited;
   private int name;
   private String note;
-  @OneToMany(mappedBy = "PrintingHouse")
+  @OneToMany(mappedBy = "printingHouse")
   private Set<Postcard> postcards;
 }

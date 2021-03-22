@@ -21,7 +21,7 @@ public class Owner extends BaseEntity {
   private Timestamp edited;
   private int name;
   private String note;
-  @OneToMany(mappedBy = "Owner")
+  @OneToMany(mappedBy = "owner")
   private Set<Postcard> postcards;
 
 }

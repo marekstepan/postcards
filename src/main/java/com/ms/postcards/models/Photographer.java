@@ -21,6 +21,6 @@ public class Photographer extends BaseEntity {
   private Timestamp edited;
   private int name;
   private String note;
-  @OneToMany(mappedBy = "Photographer")
+  @OneToMany(mappedBy = "photographer")
   private Set<Shot> shots;
 }

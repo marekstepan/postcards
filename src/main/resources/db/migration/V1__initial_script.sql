@@ -8,8 +8,8 @@ CREATE TABLE users
 CREATE TABLE owners
 (
     id         SERIAL PRIMARY KEY,
-    created    TIMESTAMPTZ NOT NULL,
-    edited     TIMESTAMPTZ NOT NULL,
+    created    TIMESTAMP NOT NULL,
+    edited     TIMESTAMP NOT NULL,
     name       INTEGER NOT NULL,
     note       VARCHAR(255)
 );
@@ -17,8 +17,8 @@ CREATE TABLE owners
 CREATE TABLE photographers
 (
     id         SERIAL PRIMARY KEY,
-    created    TIMESTAMPTZ NOT NULL,
-    edited     TIMESTAMPTZ NOT NULL,
+    created    TIMESTAMP NOT NULL,
+    edited     TIMESTAMP NOT NULL,
     name       INTEGER NOT NULL,
     note       VARCHAR(255)
 );
@@ -26,8 +26,8 @@ CREATE TABLE photographers
 CREATE TABLE printing_houses
 (
     id         SERIAL PRIMARY KEY,
-    created    TIMESTAMPTZ NOT NULL,
-    edited     TIMESTAMPTZ NOT NULL,
+    created    TIMESTAMP NOT NULL,
+    edited     TIMESTAMP NOT NULL,
     name       INTEGER NOT NULL,
     note       VARCHAR(255)
 );
@@ -35,17 +35,8 @@ CREATE TABLE printing_houses
 CREATE TABLE publishers
 (
     id         SERIAL PRIMARY KEY,
-    created    TIMESTAMPTZ NOT NULL,
-    edited     TIMESTAMPTZ NOT NULL,
-    name       INTEGER NOT NULL,
-    note       VARCHAR(255)
-);
-
-CREATE TABLE publishers
-(
-    id         SERIAL PRIMARY KEY,
-    created    TIMESTAMPTZ NOT NULL,
-    edited     TIMESTAMPTZ NOT NULL,
+    created    TIMESTAMP NOT NULL,
+    edited     TIMESTAMP NOT NULL,
     name       INTEGER NOT NULL,
     note       VARCHAR(255)
 );
@@ -53,8 +44,8 @@ CREATE TABLE publishers
 CREATE TABLE localities
 (
     id                      SERIAL PRIMARY KEY,
-    created                 TIMESTAMPTZ NOT NULL,
-    edited                  TIMESTAMPTZ NOT NULL,
+    created                 TIMESTAMP NOT NULL,
+    edited                  TIMESTAMP NOT NULL,
     object_location         POINT NOT NULL,
     photographer_location   POINT
 );
@@ -62,8 +53,8 @@ CREATE TABLE localities
 CREATE TABLE shots
 (
     id                  SERIAL PRIMARY KEY,
-    created             TIMESTAMPTZ NOT NULL,
-    edited              TIMESTAMPTZ NOT NULL,
+    created             TIMESTAMP NOT NULL,
+    edited              TIMESTAMP NOT NULL,
     object              VARCHAR(255),
     object_type         INTEGER,
     image_orientation   INTEGER,
@@ -75,8 +66,8 @@ CREATE TABLE shots
 CREATE TABLE postcards
 (
     id                          SERIAL PRIMARY KEY,
-    created                     TIMESTAMPTZ NOT NULL,
-    edited                      TIMESTAMPTZ NOT NULL,
+    created                     TIMESTAMP NOT NULL,
+    edited                      TIMESTAMP NOT NULL,
     user_id                     BIGINT NOT NULL,
     front_title                 VARCHAR(255),
     front_subtitle              VARCHAR(255),
