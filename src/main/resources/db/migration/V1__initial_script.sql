@@ -60,7 +60,8 @@ CREATE TABLE shots
     image_orientation   INTEGER,
     note                VARCHAR(255),
     postcard_id         BIGINT,
-    photographer_id     BIGINT
+    photographer_id     BIGINT,
+    locality_id         BIGINT
 );
 
 CREATE TABLE postcards

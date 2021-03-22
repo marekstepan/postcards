@@ -26,10 +26,13 @@ public class Shot extends BaseEntity {
   private int imageOrientation;
   private String note;
   @ManyToOne(cascade = CascadeType.PERSIST)
-  @JoinColumn
+  @JoinColumn(name="postcard_id")
   @JsonIgnore
   private Postcard postcard;
   @ManyToOne
   @JoinColumn(name="photographer_id")
   private Photographer photographer;
+  @ManyToOne
+  @JoinColumn(name="locality_id")
+  private Locality locality;
 }
