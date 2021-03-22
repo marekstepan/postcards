@@ -1,5 +1,6 @@
 package com.ms.postcards.models;
 
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,10 +25,13 @@ import java.util.Set;
 @Entity
 public class Postcard extends BaseEntity {
 
+  @NotNull
   private Timestamp created;
+  @NotNull
   private Timestamp edited;
   @ManyToOne
   @JoinColumn(name="user_id")
+  @NotNull
   private User user;
   private String frontTitle;
   private String frontSubtitle;

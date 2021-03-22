@@ -1,6 +1,7 @@
 package com.ms.postcards.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +20,9 @@ import java.sql.Timestamp;
 @Entity
 public class Shot extends BaseEntity {
 
+  @NotNull
   private Timestamp created;
+  @NotNull
   private Timestamp edited;
   private String object;
   private int objectType;

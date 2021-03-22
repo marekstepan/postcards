@@ -1,5 +1,6 @@
 package com.ms.postcards.models;
 
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +20,9 @@ import java.util.List;
 @Entity
 public class User extends BaseEntity implements UserDetails {
 
+  @NotNull
   private String username;
+  @NotNull
   private String password;
   @OneToMany(mappedBy = "user")
   private List<Postcard> postcards;
