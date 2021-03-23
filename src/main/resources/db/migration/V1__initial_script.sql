@@ -1,6 +1,6 @@
 CREATE TABLE users
 (
-    id         SERIAL PRIMARY KEY,
+    id         BIGSERIAL PRIMARY KEY,
     created    DATE NOT NULL,
     edited     DATE NOT NULL,
     password   VARCHAR(255) NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE users
 
 CREATE TABLE owners
 (
-    id         SERIAL PRIMARY KEY,
+    id         BIGSERIAL PRIMARY KEY,
     created    DATE NOT NULL,
     edited     DATE NOT NULL,
     name       INTEGER NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE owners
 
 CREATE TABLE photographers
 (
-    id         SERIAL PRIMARY KEY,
+    id         BIGSERIAL PRIMARY KEY,
     created    DATE NOT NULL,
     edited     DATE NOT NULL,
     name       INTEGER NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE photographers
 
 CREATE TABLE printing_houses
 (
-    id         SERIAL PRIMARY KEY,
+    id         BIGSERIAL PRIMARY KEY,
     created    DATE NOT NULL,
     edited     DATE NOT NULL,
     name       INTEGER NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE printing_houses
 
 CREATE TABLE publishers
 (
-    id         SERIAL PRIMARY KEY,
+    id         BIGSERIAL PRIMARY KEY,
     created    DATE NOT NULL,
     edited     DATE NOT NULL,
     name       INTEGER NOT NULL,
@@ -45,18 +45,18 @@ CREATE TABLE publishers
 
 CREATE TABLE localities
 (
-    id                      		SERIAL PRIMARY KEY,
-    created                 		DATE NOT NULL,
-    edited                  		DATE NOT NULL,
-    object_location         		POINT NOT NULL,
-    photographer_location   		POINT,
-    object_location_accuracy_id	BIGINT NOT NULL,
+    id                      		    BIGSERIAL PRIMARY KEY,
+    created                 		    DATE NOT NULL,
+    edited                  		    DATE NOT NULL,
+    object_location         		    POINT NOT NULL,
+    photographer_location   		    POINT,
+    object_location_accuracy_id	        BIGINT NOT NULL,
     photographer_location_accuracy_id	BIGINT
 );
 
 CREATE TABLE shots
 (
-    id                  	SERIAL PRIMARY KEY,
+    id                  	BIGSERIAL PRIMARY KEY,
     created             	DATE NOT NULL,
     edited              	DATE NOT NULL,
     object              	VARCHAR(255),
@@ -70,7 +70,7 @@ CREATE TABLE shots
 
 CREATE TABLE postcards
 (
-    id                          SERIAL PRIMARY KEY,
+    id                          BIGSERIAL PRIMARY KEY,
     created                     DATE NOT NULL,
     edited                      DATE NOT NULL,
     user_id                     BIGINT NOT NULL,
@@ -96,7 +96,7 @@ CREATE TABLE postcards
     addressee_municipality_id   BIGINT,
     addressee_zip               INTEGER,
     owner_id                    BIGINT,
-    printing_house_id           BIGINT,
+    printinghouse_id           BIGINT,
     publisher_id                BIGINT
 );
 
@@ -112,7 +112,7 @@ ALTER TABLE shots
 
 ALTER TABLE postcards
     ADD CONSTRAINT fk_postcards_printinghouse
-        FOREIGN KEY (printing_house_id)
+        FOREIGN KEY (printinghouse_id)
             REFERENCES printing_houses (id);
 
 ALTER TABLE postcards
@@ -137,27 +137,26 @@ ALTER TABLE postcards
 
 CREATE TABLE postcard_tags
 (
-    id          SERIAL PRIMARY KEY,
+    id          BIGSERIAL PRIMARY KEY,
     created     DATE NOT NULL,
     edited      DATE NOT NULL,
     tag         VARCHAR(255) NOT NULL
 );
 
-
-CREATE TABLE postcards_postcardtags
+CREATE TABLE postcards_postcardtagss
 (
-    id                  SERIAL PRIMARY KEY,
+    id                  BIGSERIAL PRIMARY KEY,
     created             DATE NOT NULL,
     edited              DATE NOT NULL,
     postcard_id         BIGINT NOT NULL,
-    postcard_tag_id     BIGINT NOT NULL,
+    postcardtag_id     BIGINT NOT NULL,
     CONSTRAINT postcards_postcards_postcardtags_fk FOREIGN KEY (postcard_id) REFERENCES postcards,
-    CONSTRAINT postcard_tags_postcards_postcardtags_fk FOREIGN KEY (postcard_tag_id) REFERENCES postcard_tags
+    CONSTRAINT postcard_tags_postcards_postcardtags_fk FOREIGN KEY (postcardtag_id) REFERENCES postcard_tags
 );
 
 CREATE TABLE conditions
 (
-    id          SERIAL PRIMARY KEY,
+    id          BIGSERIAL PRIMARY KEY,
     created     DATE NOT NULL,
     edited      DATE NOT NULL,
     value       VARCHAR(255) NOT NULL
@@ -165,7 +164,7 @@ CREATE TABLE conditions
 
 CREATE TABLE orientations
 (
-    id          SERIAL PRIMARY KEY,
+    id          BIGSERIAL PRIMARY KEY,
     created     DATE NOT NULL,
     edited      DATE NOT NULL,
     value       VARCHAR(255) NOT NULL
@@ -173,7 +172,7 @@ CREATE TABLE orientations
 
 CREATE TABLE formats
 (
-    id          SERIAL PRIMARY KEY,
+    id          BIGSERIAL PRIMARY KEY,
     created     DATE NOT NULL,
     edited      DATE NOT NULL,
     value       VARCHAR(255) NOT NULL
@@ -181,7 +180,7 @@ CREATE TABLE formats
 
 CREATE TABLE printing_techniques
 (
-    id          SERIAL PRIMARY KEY,
+    id          BIGSERIAL PRIMARY KEY,
     created     DATE NOT NULL,
     edited      DATE NOT NULL,
     value       VARCHAR(255) NOT NULL
@@ -189,7 +188,7 @@ CREATE TABLE printing_techniques
 
 CREATE TABLE municipalities
 (
-    id          SERIAL PRIMARY KEY,
+    id          BIGSERIAL PRIMARY KEY,
     created     DATE NOT NULL,
     edited      DATE NOT NULL,
     value       VARCHAR(255) NOT NULL
@@ -197,7 +196,7 @@ CREATE TABLE municipalities
 
 CREATE TABLE genres
 (
-    id          SERIAL PRIMARY KEY,
+    id          BIGSERIAL PRIMARY KEY,
     created     DATE NOT NULL,
     edited      DATE NOT NULL,
     value       VARCHAR(255) NOT NULL
@@ -205,23 +204,23 @@ CREATE TABLE genres
 
 CREATE TABLE object_types
 (
-    id          SERIAL PRIMARY KEY,
+    id          BIGSERIAL PRIMARY KEY,
     created     DATE NOT NULL,
     edited      DATE NOT NULL,
     value       VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE object_location_accuracy
+CREATE TABLE object_location_accuracies
 (
-    id          SERIAL PRIMARY KEY,
+    id          BIGSERIAL PRIMARY KEY,
     created     DATE NOT NULL,
     edited      DATE NOT NULL,
     value       VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE photographer_location_accuracy
+CREATE TABLE photographer_location_accuracies
 (
-    id          SERIAL PRIMARY KEY,
+    id          BIGSERIAL PRIMARY KEY,
     created     DATE NOT NULL,
     edited      DATE NOT NULL,
     value       VARCHAR(255) NOT NULL
@@ -270,9 +269,9 @@ ALTER TABLE shots
 ALTER TABLE localities
     ADD CONSTRAINT fk_localities_photographer_location_accuracy
         FOREIGN KEY (photographer_location_accuracy_id)
-            REFERENCES photographer_location_accuracy (id);
+            REFERENCES photographer_location_accuracies (id);
 
 ALTER TABLE localities
     ADD CONSTRAINT fk_localities_object_location_accuracy
         FOREIGN KEY (object_location_accuracy_id)
-            REFERENCES object_location_accuracy (id);
+            REFERENCES object_location_accuracies (id);

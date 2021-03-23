@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "object_location_accuracy")
+@Table(name = "object_location_accuracie")
 public class ObjectLocationAccuracy extends BaseEntity {
   private String value;
   @OneToMany(mappedBy = "objectLocationAccuracy")

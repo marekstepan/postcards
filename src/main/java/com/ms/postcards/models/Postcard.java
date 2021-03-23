@@ -7,13 +7,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -28,22 +28,33 @@ public class Postcard extends BaseEntity {
   @JoinColumn(name="user_id")
   @NotNull
   private User user;
+  @Column(name = "front_title")
   private String frontTitle;
+  @Column(name = "front_subtitle")
   private String frontSubtitle;
+  @Column(name = "shots_count")
   private int shotsCount;
+  @Column(name = "publication_year_int_start")
   private int publicationYearIntStart;
+  @Column(name = "publication_year_int_end")
   private int publicationYearIntEnd;
   private Boolean written;
   private Boolean stamped;
   private Boolean mailed;
+  @Column(name = "pcs_duplicates")
   private int pcsDuplicates;
+  @Column(name = "pcs_for_sale")
   private int pcsForSale;
+  @Column(name = "back_title")
   private String backTitle;
+  @Column(name = "back_subtitle")
   private String backSubtitle;
+  @Column(name = "image_path")
   private String imagePath;
   private String note;
   @OneToMany(mappedBy = "postcard")
   private List<Shot> shots;
+  @Column(name = "addressee_zip")
   private int addresseeZip;
   @ManyToOne
   @JoinColumn(name="owner_id")

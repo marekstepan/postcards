@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,11 +20,9 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "postcard_tag")
 public class PostcardTag extends BaseEntity {
-  @ManyToOne(cascade = CascadeType.PERSIST)
-  @JoinColumn
-  @JsonIgnore
-  protected Postcard postcard;
+
   @ManyToMany(mappedBy = "postcardTags")
   private Set<Postcard> postcards;
 }

@@ -15,7 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "municipalities")
+@Table(name = "municipalitie")
 public class Municipality extends BaseEntity {
   private String value;
   @OneToMany(mappedBy = "municipality")
