@@ -25,5 +25,5 @@ public class PostcardTag extends BaseEntity {
   @JsonIgnore
   protected Postcard postcard;
   @ManyToMany(mappedBy = "postcardTags")
-  private Set<Postcard> postcards = new HashSet<>();
+  private Set<Postcard> postcards;
 }

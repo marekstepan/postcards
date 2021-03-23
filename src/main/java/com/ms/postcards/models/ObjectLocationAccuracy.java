@@ -1,6 +1,5 @@
 package com.ms.postcards.models;
 
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,18 +7,17 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import java.util.Set;
+import javax.persistence.Table;
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Publisher extends BaseEntity {
-
-  @NotNull
-  private int name;
-  private String note;
-  @OneToMany(mappedBy = "publisher")
-  private Set<Postcard> postcards;
+@Table(name = "object_location_accuracy")
+public class ObjectLocationAccuracy extends BaseEntity {
+  private String value;
+  @OneToMany(mappedBy = "objectLocationAccuracy")
+  private List<Locality> localities;
 }

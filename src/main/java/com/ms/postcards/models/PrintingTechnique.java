@@ -1,6 +1,5 @@
 package com.ms.postcards.models;
 
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,11 +14,8 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Publisher extends BaseEntity {
-
-  @NotNull
-  private int name;
-  private String note;
-  @OneToMany(mappedBy = "publisher")
-  private Set<Postcard> postcards;
+public class PrintingTechnique extends BaseEntity {
+  private String value;
+  @OneToMany(mappedBy = "printingTechnique")
+  private Set<Postcard> postcard;
 }
