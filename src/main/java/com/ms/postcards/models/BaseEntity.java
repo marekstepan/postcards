@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 @MappedSuperclass
 public abstract class BaseEntity {
@@ -14,9 +14,9 @@ public abstract class BaseEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   @NotNull
-  private Date created;
+  private Timestamp created;
   @NotNull
-  private Date edited;
+  private Timestamp edited;
 
   public Long getId() {
     return id;
@@ -26,19 +26,19 @@ public abstract class BaseEntity {
     this.id = id;
   }
 
-  public Date getCreated() {
+  public Timestamp getCreated() {
     return created;
   }
 
-  public void setCreated(Date created) {
+  public void setCreated(Timestamp created) {
     this.created = created;
   }
 
-  public Date getEdited() {
+  public Timestamp getEdited() {
     return edited;
   }
 
-  public void setEdited(Date edited) {
+  public void setEdited(Timestamp edited) {
     this.edited = edited;
   }
 }

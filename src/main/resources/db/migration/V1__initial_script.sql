@@ -1,8 +1,8 @@
 CREATE TABLE users
 (
     id         BIGSERIAL PRIMARY KEY,
-    created    DATE NOT NULL,
-    edited     DATE NOT NULL,
+    created    TIMESTAMP NOT NULL,
+    edited     TIMESTAMP NOT NULL,
     password   VARCHAR(255) NOT NULL,
     username   VARCHAR(255) NOT NULL
 );
@@ -10,8 +10,8 @@ CREATE TABLE users
 CREATE TABLE owners
 (
     id         BIGSERIAL PRIMARY KEY,
-    created    DATE NOT NULL,
-    edited     DATE NOT NULL,
+    created    TIMESTAMP NOT NULL,
+    edited     TIMESTAMP NOT NULL,
     name       INTEGER NOT NULL,
     note       VARCHAR(255)
 );
@@ -19,8 +19,8 @@ CREATE TABLE owners
 CREATE TABLE photographers
 (
     id         BIGSERIAL PRIMARY KEY,
-    created    DATE NOT NULL,
-    edited     DATE NOT NULL,
+    created    TIMESTAMP NOT NULL,
+    edited     TIMESTAMP NOT NULL,
     name       INTEGER NOT NULL,
     note       VARCHAR(255)
 );
@@ -28,8 +28,8 @@ CREATE TABLE photographers
 CREATE TABLE printing_houses
 (
     id         BIGSERIAL PRIMARY KEY,
-    created    DATE NOT NULL,
-    edited     DATE NOT NULL,
+    created    TIMESTAMP NOT NULL,
+    edited     TIMESTAMP NOT NULL,
     name       INTEGER NOT NULL,
     note       VARCHAR(255)
 );
@@ -37,8 +37,8 @@ CREATE TABLE printing_houses
 CREATE TABLE publishers
 (
     id         BIGSERIAL PRIMARY KEY,
-    created    DATE NOT NULL,
-    edited     DATE NOT NULL,
+    created    TIMESTAMP NOT NULL,
+    edited     TIMESTAMP NOT NULL,
     name       INTEGER NOT NULL,
     note       VARCHAR(255)
 );
@@ -46,8 +46,8 @@ CREATE TABLE publishers
 CREATE TABLE localities
 (
     id                      		    BIGSERIAL PRIMARY KEY,
-    created                 		    DATE NOT NULL,
-    edited                  		    DATE NOT NULL,
+    created                 		    TIMESTAMP NOT NULL,
+    edited                  		    TIMESTAMP NOT NULL,
     object_location         		    POINT NOT NULL,
     photographer_location   		    POINT,
     object_location_accuracy_id	        BIGINT NOT NULL,
@@ -57,8 +57,8 @@ CREATE TABLE localities
 CREATE TABLE shots
 (
     id                  	BIGSERIAL PRIMARY KEY,
-    created             	DATE NOT NULL,
-    edited              	DATE NOT NULL,
+    created             	TIMESTAMP NOT NULL,
+    edited              	TIMESTAMP NOT NULL,
     object              	VARCHAR(255),
     object_type_id      	BIGINT,
     image_orientation_id	BIGINT,
@@ -71,8 +71,8 @@ CREATE TABLE shots
 CREATE TABLE postcards
 (
     id                          BIGSERIAL PRIMARY KEY,
-    created                     DATE NOT NULL,
-    edited                      DATE NOT NULL,
+    created                     TIMESTAMP NOT NULL,
+    edited                      TIMESTAMP NOT NULL,
     user_id                     BIGINT NOT NULL,
     front_title                 VARCHAR(255),
     front_subtitle              VARCHAR(255),
@@ -96,7 +96,7 @@ CREATE TABLE postcards
     addressee_municipality_id   BIGINT,
     addressee_zip               INTEGER,
     owner_id                    BIGINT,
-    printinghouse_id           BIGINT,
+    printinghouse_id            BIGINT,
     publisher_id                BIGINT
 );
 
@@ -138,18 +138,18 @@ ALTER TABLE postcards
 CREATE TABLE postcard_tags
 (
     id          BIGSERIAL PRIMARY KEY,
-    created     DATE NOT NULL,
-    edited      DATE NOT NULL,
+    created     TIMESTAMP NOT NULL,
+    edited      TIMESTAMP NOT NULL,
     tag         VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE postcards_postcardtagss
 (
     id                  BIGSERIAL PRIMARY KEY,
-    created             DATE NOT NULL,
-    edited              DATE NOT NULL,
+    created             TIMESTAMP NOT NULL,
+    edited              TIMESTAMP NOT NULL,
     postcard_id         BIGINT NOT NULL,
-    postcardtag_id     BIGINT NOT NULL,
+    postcardtag_id      BIGINT NOT NULL,
     CONSTRAINT postcards_postcards_postcardtags_fk FOREIGN KEY (postcard_id) REFERENCES postcards,
     CONSTRAINT postcard_tags_postcards_postcardtags_fk FOREIGN KEY (postcardtag_id) REFERENCES postcard_tags
 );
@@ -157,72 +157,72 @@ CREATE TABLE postcards_postcardtagss
 CREATE TABLE conditions
 (
     id          BIGSERIAL PRIMARY KEY,
-    created     DATE NOT NULL,
-    edited      DATE NOT NULL,
+    created     TIMESTAMP NOT NULL,
+    edited      TIMESTAMP NOT NULL,
     value       VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE orientations
 (
     id          BIGSERIAL PRIMARY KEY,
-    created     DATE NOT NULL,
-    edited      DATE NOT NULL,
+    created     TIMESTAMP NOT NULL,
+    edited      TIMESTAMP NOT NULL,
     value       VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE formats
 (
     id          BIGSERIAL PRIMARY KEY,
-    created     DATE NOT NULL,
-    edited      DATE NOT NULL,
+    created     TIMESTAMP NOT NULL,
+    edited      TIMESTAMP NOT NULL,
     value       VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE printing_techniques
 (
     id          BIGSERIAL PRIMARY KEY,
-    created     DATE NOT NULL,
-    edited      DATE NOT NULL,
+    created     TIMESTAMP NOT NULL,
+    edited      TIMESTAMP NOT NULL,
     value       VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE municipalities
 (
     id          BIGSERIAL PRIMARY KEY,
-    created     DATE NOT NULL,
-    edited      DATE NOT NULL,
+    created     TIMESTAMP NOT NULL,
+    edited      TIMESTAMP NOT NULL,
     value       VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE genres
 (
     id          BIGSERIAL PRIMARY KEY,
-    created     DATE NOT NULL,
-    edited      DATE NOT NULL,
+    created     TIMESTAMP NOT NULL,
+    edited      TIMESTAMP NOT NULL,
     value       VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE object_types
 (
     id          BIGSERIAL PRIMARY KEY,
-    created     DATE NOT NULL,
-    edited      DATE NOT NULL,
+    created     TIMESTAMP NOT NULL,
+    edited      TIMESTAMP NOT NULL,
     value       VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE object_location_accuracies
 (
     id          BIGSERIAL PRIMARY KEY,
-    created     DATE NOT NULL,
-    edited      DATE NOT NULL,
+    created     TIMESTAMP NOT NULL,
+    edited      TIMESTAMP NOT NULL,
     value       VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE photographer_location_accuracies
 (
     id          BIGSERIAL PRIMARY KEY,
-    created     DATE NOT NULL,
-    edited      DATE NOT NULL,
+    created     TIMESTAMP NOT NULL,
+    edited      TIMESTAMP NOT NULL,
     value       VARCHAR(255) NOT NULL
 );
 
