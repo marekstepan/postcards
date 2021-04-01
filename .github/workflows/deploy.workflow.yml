@@ -1,0 +1,33 @@
+name: Heroku Deployment Workflow
+on:
+  push:
+    branches:
+      - main
+env:
+  POSTCARDS_ENVIRONMENT: "prod"
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.8.9
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+      - name: notify of failure
+        if: failure()
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          severity: error
+          color: '#D82E2A'
+          details: Deployment on Heroku failed!
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+      - name: notify of success
+        if: success()
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          severity: info
+          color: '#96EC98'
+          details: Deployment on Heroku succeeded!
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}

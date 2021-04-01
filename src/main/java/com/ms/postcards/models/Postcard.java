@@ -25,7 +25,7 @@ import java.util.Set;
 public class Postcard extends BaseEntity {
 
   @ManyToOne
-  @JoinColumn(name="user_id")
+  @JoinColumn(name = "user_id")
   @NotNull
   private User user;
   @Column(name = "front_title")
@@ -57,31 +57,31 @@ public class Postcard extends BaseEntity {
   @Column(name = "addressee_zip")
   private int addresseeZip;
   @ManyToOne
-  @JoinColumn(name="owner_id")
+  @JoinColumn(name = "owner_id")
   private Owner owner;
   @ManyToOne
-  @JoinColumn(name="printinghouse_id")
+  @JoinColumn(name = "printinghouse_id")
   private PrintingHouse printingHouse;
   @ManyToOne
-  @JoinColumn(name="publisher_id")
+  @JoinColumn(name = "publisher_id")
   private Publisher publisher;
   @ManyToOne
-  @JoinColumn(name="condition_id")
+  @JoinColumn(name = "condition_id")
   private Condition condition;
   @ManyToOne
-  @JoinColumn(name="format_id")
+  @JoinColumn(name = "format_id")
   private Format format;
   @ManyToOne
-  @JoinColumn(name="genre_id")
+  @JoinColumn(name = "genre_id")
   private Genre genre;
   @ManyToOne
-  @JoinColumn(name="addressee_municipality_id")
+  @JoinColumn(name = "addressee_municipality_id")
   private Municipality municipality;
   @ManyToOne
-  @JoinColumn(name="orientation_id")
+  @JoinColumn(name = "orientation_id")
   private Orientation orientation;
   @ManyToOne
-  @JoinColumn(name="printing_technique_id")
+  @JoinColumn(name = "printing_technique_id")
   private PrintingTechnique printingTechnique;
 
   @ManyToMany(cascade = { CascadeType.ALL })

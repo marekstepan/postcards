@@ -3,6 +3,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
     id 'checkstyle'
+    id 'jacoco'
 }
 
 group = 'com.ms'
@@ -24,6 +25,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'junit:junit:4.12'
     implementation 'org.flywaydb:flyway-core'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
@@ -31,8 +33,9 @@ dependencies {
     compile group: 'com.auth0', name: 'java-jwt', version: '3.11.0'
     compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'com.h2database:h2'
     runtimeOnly 'org.postgresql:postgresql'
+    compile group: 'org.orbisgis', name: 'h2gis', version: '1.5.0'
+    testImplementation group: 'com.h2database', name: 'h2', version: '1.4.197'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
@@ -42,4 +45,38 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+jacoco {
+    toolVersion = "0.8.6"
+}
+
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            enabled = false
+            element = 'PACKAGE'
+            includes = [
+                    'com.ms.postcards.controllers',
+                    'com.ms.postcards.services'
+            ]
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                minimum = 0.6
+            }
+        }
+    }
 }
