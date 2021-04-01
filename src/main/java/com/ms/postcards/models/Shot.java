@@ -21,19 +21,19 @@ public class Shot extends BaseEntity {
   private String object;
   private String note;
   @ManyToOne(cascade = CascadeType.PERSIST)
-  @JoinColumn(name="postcard_id")
+  @JoinColumn(name = "postcard_id")
   @JsonIgnore
   private Postcard postcard;
   @ManyToOne
-  @JoinColumn(name="photographer_id")
+  @JoinColumn(name = "photographer_id")
   private Photographer photographer;
   @ManyToOne
-  @JoinColumn(name="locality_id")
+  @JoinColumn(name = "locality_id")
   private Locality locality;
   @ManyToOne
-  @JoinColumn(name="object_type_id")
+  @JoinColumn(name = "object_type_id")
   private ObjectType objectType;
   @ManyToOne
-  @JoinColumn(name="image_orientation_id")
+  @JoinColumn(name = "image_orientation_id")
   private Orientation orientation;
 }

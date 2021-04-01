@@ -24,16 +24,16 @@ import java.util.Set;
 public class Locality extends BaseEntity {
 
   @NotNull
-  @Column(name = "object_location", columnDefinition="Point")
+  @Column(name = "object_location", columnDefinition = "Point")
   private Point objectLocation;
-  @Column(name = "photographer_location", columnDefinition="Point")
+  @Column(name = "photographer_location", columnDefinition = "Point")
   private Point photographerLocation;
   @OneToMany(mappedBy = "locality")
   private Set<Shot> shots;
   @ManyToOne
-  @JoinColumn(name="object_location_accuracy_id")
+  @JoinColumn(name = "object_location_accuracy_id")
   private ObjectLocationAccuracy objectLocationAccuracy;
   @ManyToOne
-  @JoinColumn(name="photographer_location_accuracy_id")
+  @JoinColumn(name = "photographer_location_accuracy_id")
   private PhotographerLocationAccuracy photographerLocationAccuracy;
 }
