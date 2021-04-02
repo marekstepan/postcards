@@ -10,19 +10,20 @@ import org.springframework.context.annotation.ComponentScan;
 
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ComponentScan("com.ms.postcards")
 class JwtTokenUtilityTest {
 
   JwtTokenUtility jwtTokenUtility = new JwtTokenUtility();
   String token =
-              "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYxODgzMzA0NSwiaWF0IjoxNjE3MzYxOD"
-    + "E2fQ.bIV6T9hzBMNXd_72mupMjDp65voLjVjh32uc_0HiRKo";
+      "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYxODgzMzA0NSwiaWF0IjoxNjE3MzYxOD"
+          + "E2fQ.bIV6T9hzBMNXd_72mupMjDp65voLjVjh32uc_0HiRKo";
 
   String tokenNoExp =
       "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTYxNzM2MTY4MH0.-TsAPiR-ri6M0mx9Ew7kPRh6_v"
-    + "fs2MBjyqVF1xZLMfY";
+          + "fs2MBjyqVF1xZLMfY";
 
   @MockBean
   private UserRepository userRepository;
